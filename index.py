@@ -65,4 +65,7 @@ def product(url_key = 'crocin-pain-relief-tablet'):
         '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[2]/div/div/div[1]/div[1]/h2')[0].text
 
     return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(threaded=True)
     
