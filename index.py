@@ -49,18 +49,36 @@ def product(url_key = 'crocin-pain-relief-tablet'):
     dom = lxml.etree.HTML(str(soup))
     data = {}
 
+
     data['name'] = dom.xpath(
         '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[3]/div[1]/h1')[0].text
-    data['manufacturer'] = dom.xpath(
-        '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[3]/div[1]/div[1]/p')[0].text
-    data['composition'] = dom.xpath(
-        '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[3]/div[1]/div[2]/a/p')[0].text
-    data['img'] = dom.xpath(
-        '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[1]/div/div/div/div[2]/div[1]/div/div/img/@src')[0]
-    data['description'] = dom.xpath(
-        '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[2]/div[1]/div[2]/div[1]/div/p')[0].text
-    data['about'] = dom.xpath(
-        '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div/p[1]')[0].text
+    try :
+        data['manufacturer'] = dom.xpath(
+            '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[3]/div[1]/div[1]/p')[0].text
+    except :
+        data['manufacturer'] =''
+    try :
+        data['composition'] = dom.xpath(
+            '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[3]/div[1]/div[2]/a/p')[0].text
+    except :
+        data['composition'] = ''
+
+    try :    
+        data['img'] = dom.xpath(
+            '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[1]/div[1]/div/div/div/div[2]/div[1]/div/div/img/@src')[0]
+    except :
+        data['img'] = ''
+
+    try :    
+        data['description'] = dom.xpath(
+            '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[2]/div[1]/div[2]/div[1]/div/p')[0].text
+    except :
+        data['description'] = ' '
+    try :
+        data['about'] = dom.xpath(
+            '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div/p[1]')[0].text
+    except :
+        data['about'] = ''
     data['price'] = dom.xpath(
         '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[2]/div/div/div[1]/div[1]/h2')[0].text
 
