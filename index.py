@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route("/")
 def main():
-    return "<h1>Hiiiii</h1>"
+    return "<h1>medX-api</h1>"
 
 @app.route("/search/<string:query>")
 def search(query= 'corocin'):
@@ -85,7 +85,7 @@ def product(url_key = 'crocin-pain-relief-tablet'):
         data['price'] = dom.xpath(
         '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[2]/div/div/div[1]/div[1]/h2')[0].text
     except :
-        data['price'] = ''
+        data['price'] = ''    
 
     return jsonify(data)
 
